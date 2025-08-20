@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déco Art Jour de Chance - Montres Rolex & Vêtements Sport</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff6b35 0%, #87ceeb 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+      
+        header {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            padding: 0.8rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #87ceeb;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cart-icon {
+            position: relative;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cart-icon:hover {
+            background: white;
+            color: #ff6b35;
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff6b35;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            animation: bounce 0.5s ease;
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 1rem;
+            font-size: 0.9rem;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav a:hover {
+            background: rgba(255,255,255,0.2);
+            color: #87ceeb;
+            transform: translateY(-2px);
+        }
+
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.9), rgba(135, 206, 235, 0.9));
+            padding: 100px 0 60px;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: scale(1.1);
+            transition: all 3s ease-in-out;
+            filter: brightness(0.8);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            filter: brightness(1);
+        }
+
+        .slide.next {
+            transform: scale(1.05);
+            opacity: 0.3;
+        }
+
+       
+        .slide:nth-child(1) {
+            background-image: linear-gradient(45deg, rgba(255,107,53,0.3), rgba(135,206,235,0.3)), url('IMAGE_HERO_1.jpg');
+        }
+
+        .slide:nth-child(2) {
+            background-image: linear-gradient(135deg, rgba(135,206,235,0.3), rgba(255,107,53,0.3)), url('IMAGE_HERO_2.jpg');
+        }
+
+        .slide:nth-child(3) {
+            background-image: linear-gradient(225deg, rgba(255,107,53,0.3), rgba(135,206,235,0.3)), url('IMAGE_HERO_3.jpg');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            background: rgba(0,0,0,0.4);
+            padding: 2rem;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #fff, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
+            min-width: 120px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255,107,53,0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #87ceeb, #5ba3d4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(135,206,235,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #ff6b35;
+        }
+
+      
+        .products {
+            padding: 40px 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #ff6b35;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b35, #87ceeb);
+            border-radius: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid rgba(255,107,53,0.1);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,107,53,0.1), rgba(135,206,235,0.1));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
+            border-radius: 20px;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,107,53,0.2), rgba(135,206,235,0.2));
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1;
+        }
+
+        .product-card:hover .product-image::before {
+            opacity: 1;
+        }
+
+        .product-image::after {
+            content: '👁️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 2rem;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 2;
+        }
+
+        .product-card:hover .product-image::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 3;
+            box-shadow: 0 4px 15px rgba(255,107,53,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .product-info {
+            padding: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .product-price {
+            font-size: 1rem;
+            color: #ff6b35;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .btn-add-cart {
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+        }
+
+        .btn-add-cart:hover {
+            background: linear-gradient(45deg, #87ceeb, #5ba3d4);
+            transform: scale(1.05);
+        }
+
+        .btn-quick-order {
+            background: transparent;
+            border: 2px solid #ff6b35;
+            color: #ff6b35;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-quick-order:hover {
+            background: #ff6b35;
+            color: white;
+        }
+
+      
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            margin: 10px;
+            padding: 1.5rem;
+            border-radius: 20px;
+            width: calc(100% - 20px);
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,107,53,0.1);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close:hover {
+            color: #ff6b35;
+            background: rgba(255,107,53,0.1);
+            transform: rotate(90deg);
+        }
+
+      
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s;
+        }
+
+        .cart-item:hover {
+            background: rgba(255,107,53,0.05);
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 1rem;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .cart-item-price {
+            color: #ff6b35;
+            font-weight: bold;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f8f9fa;
+            padding: 0.3rem;
+            border-radius: 15px;
+        }
+
+        .quantity-btn {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-total {
+            background: linear-gradient(45deg, #ff6b35, #87ceeb);
+            color: white;
+            padding: 1rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+       
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #ff6b35;
+            outline: none;
+            box-shadow: 0 0 20px rgba(255,107,53,0.1);
+            transform: scale(1.02);
+        }
+
+       
+        .services {
+            padding: 40px 0;
+            background: linear-gradient(135deg, #87ceeb, #ff6b35);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 2px, transparent 2px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            transition: all 0.4s;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+      
+        footer {
+            background: linear-gradient(135deg, #333, #444);
+            color: white;
+            padding: 30px 0 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            color: #ff6b35;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+      
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0,0,0);
+            }
+            40%, 43% {
+                transform: translate3d(0,-10px,0);
+            }
+            70% {
+                transform: translate3d(0,-5px,0);
+            }
+            90% {
+                transform: translate3d(0,-2px,0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255,107,53, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255,107,53, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255,107,53, 0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+      
+        @media (min-width: 480px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .modal-content {
+                margin: 5% auto;
+                width: 90%;
+                max-width: 600px;
+            }
+
+            .nav {
+                width: auto;
+                margin-top: 0;
+            }
+
+            .header-content {
+                flex-wrap: nowrap;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .products {
+                padding: 60px 0;
+            }
+            
+            .services {
+                padding: 60px 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+       
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+       
+        .loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Déco Art Jour de Chance</div>
+                <nav class="nav">
+                    <a onclick="showSection('home')">Accueil</a>
+                    <a onclick="showSection('montres')">Montres</a>
+                    <a onclick="showSection('maillots')">Maillots</a>
+                    <a onclick="showSection('vetements')">Vêtements</a>
+                    <a onclick="showSection('infographie')">infographie</a>
+                </nav>
+                <div class="header-right">
+                    <div class="cart-icon" onclick="openCartModal()">
+                        🛒
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="section">
+        <div class="hero">
+            <div class="slideshow-container">
+                <div class="slide active loading"></div>
+                <div class="slide loading"></div>
+                <div class="slide loading"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Déco Art Jour de Chance</h1>
+                    <p>✨ Montres Rolex, Maillots & Vêtements de Sport Premium ✨</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn" onclick="showSection('montres')">🕰️ Montres</a>
+                        <a href="#" class="btn" onclick="showSection('maillots')">⚽ Maillots</a>
+                        <a href="#" class="btn btn-secondary" onclick="showSection('vetements')">👕 Vêtements</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="products fade-in">
+            <div class="container">
+                <h2 class="section-title">🔥 Nos Produits Phares 🔥</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('VETEMENT_SPORT_1.jpg')">
+                            <div class="product-badge">Nouveau</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Survêtement Nike</h3>
+                            <p class="product-price">8,000 FCFA</p>
+                            <p class="product-description">Ensemble complet confortable et stylé</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Survêtement Nike', 8000, 'VETEMENT_SPORT_1.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Survêtement Nike', '8000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="services fade-in">
+            <div class="container">
+                <h2 class="section-title">✨ Nos Services Premium ✨</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">⚽</div>
+                        <h3>Flocage Personnalisé</h3>
+                        <p>Personnalisez vos maillots avec nom et numéro</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🕰️</div>
+                        <h3>Montres Authentiques</h3>
+                        <p>Collection exclusive de montres Rolex</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🚚</div>
+                        <h3>Livraison Rapide</h3>
+                        <p>Livraison gratuite dans Douala sous 24h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Montres Section -->
+    <section id="montres" class="section hidden">
+        <div class="hero">
+            <div class="slideshow-container">
+                <div class="slide active loading" style="background-image: url('MONTRES_HERO_1.jpg')"></div>
+                <div class="slide loading" style="background-image: url('MONTRES_HERO_2.jpg')"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>💎 Collection Montres Rolex 💎</h1>
+                    <p>Montres de prestige au meilleur prix - 35,000 FCFA</p>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="container">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_SUBMARINER.jpg')">
+                            <div class="product-badge">Bestseller</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Submariner</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre plongée iconique, étanche 300m</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Submariner', 35000, 'ROLEX_SUBMARINER.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Submariner', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_DAYTONA.jpg')">
+                            <div class="product-badge">Luxe</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Daytona</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Chronographe sportif de course</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Daytona', 35000, 'ROLEX_DAYTONA.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Daytona', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_GMT.jpg')">
+                            <div class="product-badge">Élégant</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex GMT Master</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre pilote double fuseau</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex GMT Master', 35000, 'ROLEX_GMT.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex GMT Master', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_DATEJUST.jpg')">
+                            <div class="product-badge">Classique</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Datejust</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Élégance intemporelle</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Datejust', 35000, 'ROLEX_DATEJUST.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Datejust', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_EXPLORER.jpg')">
+                            <div class="product-badge">Aventure</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Explorer</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Pour les aventuriers</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Explorer', 35000, 'ROLEX_EXPLORER.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Explorer', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_YACHT.jpg')">
+                            <div class="product-badge">Premium</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Yacht-Master</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre nautique de luxe</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Yacht-Master', 35000, 'ROLEX_YACHT.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Yacht-Master', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="montres" class="section hidden">
+        <div class="hero">
+            <div class="slideshow-container">
+                <div class="slide active loading" style="background-image: url('MONTRES_HERO_1.jpg')"></div>
+                <div class="slide loading" style="background-image: url('MONTRES_HERO_2.jpg')"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>💎 Collection Montres Rolex 💎</h1>
+                    <p>Montres de prestige au meilleur prix - 35,000 FCFA</p>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="container">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_SUBMARINER.jpg')">
+                            <div class="product-badge">Bestseller</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Submariner</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre plongée iconique, étanche 300m</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Submariner', 35000, 'ROLEX_SUBMARINER.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Submariner', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_DAYTONA.jpg')">
+                            <div class="product-badge">Luxe</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Daytona</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Chronographe sportif de course</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Daytona', 35000, 'ROLEX_DAYTONA.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Daytona', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_GMT.jpg')">
+                            <div class="product-badge">Élégant</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex GMT Master</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre pilote double fuseau</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex GMT Master', 35000, 'ROLEX_GMT.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex GMT Master', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_DATEJUST.jpg')">
+                            <div class="product-badge">Classique</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Datejust</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Élégance intemporelle</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Datejust', 35000, 'ROLEX_DATEJUST.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Datejust', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_EXPLORER.jpg')">
+                            <div class="product-badge">Aventure</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Explorer</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Pour les aventuriers</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Explorer', 35000, 'ROLEX_EXPLORER.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Explorer', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_YACHT.jpg')">
+                            <div class="product-badge">Premium</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Yacht-Master</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre nautique de luxe</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Yacht-Master', 35000, 'ROLEX_YACHT.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Yacht-Master', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="montres" class="section hidden">
+        <div class="hero">
+            <div class="slideshow-container">
+                <div class="slide active loading" style="background-image: url('MONTRES_HERO_1.jpg')"></div>
+                <div class="slide loading" style="background-image: url('MONTRES_HERO_2.jpg')"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>💎 Collection Montres Rolex 💎</h1>
+                    <p>Montres de prestige au meilleur prix - 35,000 FCFA</p>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="container">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_SUBMARINER.jpg')">
+                            <div class="product-badge">Bestseller</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Submariner</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre plongée iconique, étanche 300m</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Submariner', 35000, 'ROLEX_SUBMARINER.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Submariner', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_DAYTONA.jpg')">
+                            <div class="product-badge">Luxe</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Daytona</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Chronographe sportif de course</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Daytona', 35000, 'ROLEX_DAYTONA.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Daytona', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_GMT.jpg')">
+                            <div class="product-badge">Élégant</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex GMT Master</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre pilote double fuseau</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex GMT Master', 35000, 'ROLEX_GMT.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex GMT Master', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_DATEJUST.jpg')">
+                            <div class="product-badge">Classique</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Datejust</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Élégance intemporelle</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Datejust', 35000, 'ROLEX_DATEJUST.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Datejust', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_EXPLORER.jpg')">
+                            <div class="product-badge">Aventure</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Explorer</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Pour les aventuriers</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Explorer', 35000, 'ROLEX_EXPLORER.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Explorer', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_YACHT.jpg')">
+                            <div class="product-badge">Premium</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Yacht-Master</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre nautique de luxe</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Yacht-Master', 35000, 'ROLEX_YACHT.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Yacht-Master', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="montres" class="section hidden">
+        <div class="hero">
+            <div class="slideshow-container">
+                <div class="slide active loading" style="background-image: url('MONTRES_HERO_1.jpg')"></div>
+                <div class="slide loading" style="background-image: url('MONTRES_HERO_2.jpg')"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>💎 Collection Montres Rolex 💎</h1>
+                    <p>Montres de prestige au meilleur prix - 35,000 FCFA</p>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="container">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_SUBMARINER.jpg')">
+                            <div class="product-badge">Bestseller</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Submariner</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre plongée iconique, étanche 300m</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Submariner', 35000, 'ROLEX_SUBMARINER.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Submariner', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_DAYTONA.jpg')">
+                            <div class="product-badge">Luxe</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Daytona</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Chronographe sportif de course</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Daytona', 35000, 'ROLEX_DAYTONA.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Daytona', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_GMT.jpg')">
+                            <div class="product-badge">Élégant</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex GMT Master</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre pilote double fuseau</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex GMT Master', 35000, 'ROLEX_GMT.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex GMT Master', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_DATEJUST.jpg')">
+                            <div class="product-badge">Classique</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Datejust</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Élégance intemporelle</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Datejust', 35000, 'ROLEX_DATEJUST.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Datejust', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_EXPLORER.jpg')">
+                            <div class="product-badge">Aventure</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Explorer</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Pour les aventuriers</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Explorer', 35000, 'ROLEX_EXPLORER.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Explorer', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ROLEX_YACHT.jpg')">
+                            <div class="product-badge">Premium</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Rolex Yacht-Master</h3>
+                            <p class="product-price">35,000 FCFA</p>
+                            <p class="product-description">Montre nautique de luxe</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Rolex Yacht-Master', 35000, 'ROLEX_YACHT.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Rolex Yacht-Master', '35000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section id="maillots" class="section hidden">
+        <div class="hero">
+            <div class="slideshow-container">
+                <div class="slide active loading" style="background-image: url('MAILLOTS_HERO_1.jpg')"></div>
+                <div class="slide loading" style="background-image: url('MAILLOTS_HERO_2.jpg')"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>⚽ Collection Maillots 2025 ⚽</h1>
+                    <p>Maillots officiels - 6,000 FCFA (Gros: 5,000 FCFA)</p>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="container">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('PSG_DOMICILE_2024.jpg')">
+                            <div class="product-badge">2025</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">PSG Domicile 2025</h3>
+                            <p class="product-price">6,000 FCFA (Gros: 5,000 FCFA)</p>
+                            <p class="product-description">Maillot officiel avec flocage inclus</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Maillot PSG', 6000, 'PSG_DOMICILE_2024.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Maillot PSG', '6000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('REAL_MADRID_2024.jpg')">
+                            <div class="product-badge">Populaire</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Real Madrid 2025</h3>
+                            <p class="product-price">6,000 FCFA (Gros: 5,000 FCFA)</p>
+                            <p class="product-description">Maillot blanc légendaire</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Maillot Real Madrid', 6000, 'REAL_MADRID_2024.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Maillot Real Madrid', '6000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('BARCELONA_2024.jpg')">
+                            <div class="product-badge">Nouveau</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Barcelona 2025</h3>
+                            <p class="product-price">6,000 FCFA (Gros: 5,000 FCFA)</p>
+                            <p class="product-description">Maillot blaugrana moderne</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Maillot Barcelona', 3000, 'BARCELONA_2024.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Maillot Barcelona', '6000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('MANCHESTER_CITY_2024.jpg')">
+                            <div class="product-badge">Champion</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Manchester City 2025</h3>
+                            <p class="product-price">6,000 FCFA (Gros: 5,000 FCFA)</p>
+                            <p class="product-description">Maillot des champions</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Maillot Manchester City', 6000, 'MANCHESTER_CITY_2024.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Maillot Manchester City', '6000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('LIVERPOOL_2024.jpg')">
+                            <div class="product-badge">Rouge</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Liverpool 2025</h3>
+                            <p class="product-price">6,000 FCFA (Gros: 5,000 FCFA)</p>
+                            <p class="product-description">Maillot rouge iconique</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Maillot Liverpool', 6000, 'LIVERPOOL_2024.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Maillot Liverpool', '6000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ARSENAL_2024.jpg')">
+                            <div class="product-badge">Gunners</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Arsenal 2025</h3>
+                            <p class="product-price">6,000 FCFA (Gros: 5,000 FCFA)</p>
+                            <p class="product-description">Maillot des Gunners</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Maillot Arsenal', 6000, 'ARSENAL_2024.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Maillot Arsenal', '6000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="vetements" class="section hidden">
+        <div class="hero">
+            <div class="slideshow-container">
+                <div class="slide active loading" style="background-image: url('VETEMENTS_HERO_1.jpg')"></div>
+                <div class="slide loading" style="background-image: url('VETEMENTS_HERO_2.jpg')"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>👕 Vêtements de Sport Premium 👕</h1>
+                    <p>Collections Nike, Adidas, Puma - Style et Confort</p>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="container">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('SURVETEMENT_NIKE.jpg')">
+                            <div class="product-badge">Nike</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Survêtement Nike Complet</h3>
+                            <p class="product-price">8,000 FCFA</p>
+                            <p class="product-description">Ensemble veste + pantalon, confort premium</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Survêtement Nike', 8000, 'SURVETEMENT_NIKE.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Survêtement Nike', '8000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('JOGGING_ADIDAS.jpg')">
+                            <div class="product-badge">Adidas</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Jogging Adidas</h3>
+                            <p class="product-price">5,000 FCFA</p>
+                            <p class="product-description">Pantalon de sport respirant</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Jogging Adidas', 5000, 'JOGGING_ADIDAS.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Jogging Adidas', '5000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('SHORTS_NIKE.jpg')">
+                            <div class="product-badge">Sport</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Shorts Nike Sport</h3>
+                            <p class="product-price">3,500 FCFA</p>
+                            <p class="product-description">Short léger pour l'entraînement</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Shorts Nike', 3500, 'SHORTS_NIKE.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Shorts Nike', '3500')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('TEE_SHIRT_PUMA.jpg')">
+                            <div class="product-badge">Puma</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Tee-shirt Puma Sport</h3>
+                            <p class="product-price">2,500 FCFA</p>
+                            <p class="product-description">T-shirt technique respirant</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Tee-shirt Puma', 2500, 'TEE_SHIRT_PUMA.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Tee-shirt Puma', '2500')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('VESTE_ADIDAS.jpg')">
+                            <div class="product-badge">Training</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Veste Training Adidas</h3>
+                            <p class="product-price">6,000 FCFA</p>
+                            <p class="product-description">Veste d'entraînement coupe-vent</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Veste Adidas', 6000, 'VESTE_ADIDAS.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Veste Adidas', '6000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('ENSEMBLE_UNDER_ARMOUR.jpg')">
+                            <div class="product-badge">Premium</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Ensemble Under Armour</h3>
+                            <p class="product-price">10,000 FCFA</p>
+                            <p class="product-description">Ensemble complet haute performance</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Ensemble Under Armour', 10000, 'ENSEMBLE_UNDER_ARMOUR.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Ensemble Under Armour', '10000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('POLO_LACOSTE.jpg')">
+                            <div class="product-badge">Élégant</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Polo Lacoste Sport</h3>
+                            <p class="product-price">4,500 FCFA</p>
+                            <p class="product-description">Polo classique pour le sport chic</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Polo Lacoste', 4500, 'POLO_LACOSTE.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Polo Lacoste', '4500')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('LEGGING_NIKE.jpg')">
+                            <div class="product-badge">Femme</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Legging Nike Femme</h3>
+                            <p class="product-price">4,000 FCFA</p>
+                            <p class="product-description">Legging stretch pour fitness</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Legging Nike', 4000, 'LEGGING_NIKE.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Legging Nike', '4000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image loading" style="background-image: url('BRASSIERE_ADIDAS.jpg')">
+                            <div class="product-badge">Fitness</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Brassière Sport Adidas</h3>
+                            <p class="product-price">3,000 FCFA</p>
+                            <p class="product-description">Soutien optimal pour le sport</p>
+                            <div class="product-actions">
+                                <button class="btn-add-cart" onclick="addToCart('Brassière Adidas', 3000, 'BRASSIERE_ADIDAS.jpg')">🛒 Ajouter</button>
+                                <button class="btn-quick-order" onclick="openOrderModal('Brassière Adidas', '3000')">⚡</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="infographie" class="section hidden">
+        <div class="hero">
+            <div class="slideshow-container">
+                <div class="slide active loading" style="background-image: url('SERVICES_HERO_1.jpg')"></div>
+                <div class="slide loading" style="background-image: url('SERVICES_HERO_2.jpg')"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>⭐ Nos Services Premium ⭐</h1>
+                    <p>Flocage, personnalisation et bien plus encore</p>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('machine\ de\ flocage.jpg')">
+                            <div class="product-badge">machine de flocage</div>
+                    </div>
+                    <p>Ajoutez nom, numéro et logo sur vos maillots. Service professionnel avec matériaux de qualité premium.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="product-image" style="background-image: url('machine\ DTF.jpg')">
+                            <div class="product-badge">machine DTF</div>
+                    </div>
+                        <p>Personnalisation textile rapide, impression sur tout tissu et transferts durables.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="product-image" style="background-image: url('machine\ de\ laminage.jpg')">
+                            <div class="product-badge">machine de laminage</div>
+                    </div>
+                        <p>Laminage de documents, protection contre l’eau et l’usure, finition brillante ou mate.</p>
+                </div>
+                    <div class="service-card">
+                        <div class="product-image" style="background-image: url('machine\ a\ impression.jpg')">
+                            <div class="product-badge">machine a impression</div>
+                    </div>
+                        <p>Impression de documents, images ou designs, en couleur ou noir et blanc, sur papier ou supports variés.</p>
+                </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎁</div>
+                        <h3>Cadeaux Personnalisés</h3>
+                        <p>Maillots et accessoires personnalisés pour vos cadeaux. Emballage offert.</p>
+                        <button class="btn" onclick="openOrderModal('Cadeau Personnalisé', 'Sur devis')">Personnaliser</button>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛒</div>
+                        <h3>produits</h3>
+                        <p>donnée le nom et la taille d'un equipement,produits ou service que vous aimeriez et nous le trouvons pour vous !.</p>
+                        <button class="btn" onclick="openOrderModal('Réparation Montre', 'Sur devis')">service</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCartModal()">&times;</span>
+            <h2>🛒 Mon Panier</h2>
+            <div id="cartItems">
+                <p style="text-align: center; color: #666; padding: 2rem;">Votre panier est vide</p>
+            </div>
+            <div class="cart-total" id="cartTotal" style="display: none;">
+                Total: 0 FCFA
+            </div>
+            <button class="btn" id="checkoutBtn" style="width: 100%; margin-top: 1rem; display: none;" onclick="proceedToCheckout()">
+                📱 Commander via WhatsApp
+            </button>
+        </div>
+    </div>
+
+   
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            <h2>⚡ Commande Express</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="productName">Produit:</label>
+                    <input type="text" id="productName" name="productName" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerName">Nom complet *:</label>
+                    <input type="text" id="customerName" name="customerName" required placeholder="Votre nom complet">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Téléphone *:</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+237 6XX XXX XXX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Quantité:</label>
+                    <select id="quantity" name="quantity" onchange="updatePrice()">
+                        <option value="1">1 pièce</option>
+                        <option value="2">2 pièces</option>
+                        <option value="3">3 pièces</option>
+                        <option value="5">5 pièces (Prix de gros)</option>
+                        <option value="10">10 pièces (Prix de gros)</option>
+                        <option value="20">20 pièces (Prix de gros)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="sizeGroup" style="display:none;">
+                    <label for="size">Taille:</label>
+                    <select id="size" name="size">
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M" selected>M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="flockingGroup" style="display:none;">
+                    <label for="flocking">🎨 Flocage (nom/numéro):</label>
+                    <input type="text" id="flocking" name="flocking" placeholder="Ex: MESSI 10">
+                    <small style="color: #ff6b35;">✨ Flocage gratuit pour les maillots</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">📍 Adresse de livraison:</label>
+                    <textarea id="address" name="address" placeholder="Douala, quartier, rue..." rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">📝 Notes spéciales:</label>
+                    <textarea id="notes" name="notes" placeholder="Couleur préférée, urgence, etc..." rows="2"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="totalPrice">💰 Prix total:</label>
+                    <input type="text" id="totalPrice" name="totalPrice" readonly style="font-weight: bold; color: #ff6b35; font-size: 1.1rem;">
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; margin-top: 1rem; font-size: 1rem;">
+                    📱 Passer commande via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+   
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>📞 Contact</h3>
+                    <div class="contact-info">
+                        <span>📍 Douala, total Koulouloun</span>
+                    </div>
+                    <div class="contact-info">
+                        <span>📱 +237 670 131 186</span>
+                    </div>
+                    <div class="contact-info">
+                        <span>🕒 Lun-Sam: 8h-20h, Dim: 9h-18h</span>
+                    </div>
+                    <div class="contact-info">
+                        <span>💬 Réponse WhatsApp 24/7</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>🛍️ Nos Produits</h3>
+                    <p>• 💎 Montres Rolex authentiques</p>
+                    <p>• ⚽ Maillots de foot officiels 2025</p>
+                    <p>• 👕 Vêtements Nike, Adidas, Puma</p>
+                    <p>• 🎨 Services de flocage professionnel</p>
+                    <p>• 🏃 Accessoires sportifs </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>✨ Avantages</h3>
+                    <p>• ✅ Qualité garantie ou remboursé</p>
+                    <p>• 💰 Prix les plus bas de Douala</p>
+                    <p>• 🚚 Livraison a partir de 1000 FCFA</p>
+                    <p>• 🎨 Flocage sur maillots</p>
+                    <p>• 💳 Paiement à la livraison</p>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #555;">
+                &copy; 2025 Déco Art Jour de Chance. Tous droits réservés. 🏆 Votre boutique de confiance à Douala.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let currentProduct = { name: '', price: '' };
+        let slideIndex = 0;
+        let cart = [];
+        
+       
+        function showSlides() {
+            const currentSection = document.querySelector('.section:not(.hidden)');
+            if (!currentSection) return;
+            
+            const slides = currentSection.querySelectorAll('.slide');
+            if (slides.length === 0) return;
+            
+            
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'next');
+                if (index === slideIndex) {
+                    slide.classList.add('active');
+                } else if (index === (slideIndex + 1) % slides.length) {
+                    slide.classList.add('next');
+                }
+            });
+            
+            slideIndex = (slideIndex + 1) % slides.length;
+        }
+        
+       
+        setInterval(showSlides, 5000);
+        showSlides();
+        
+        
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((element, index) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    setTimeout(() => {
+                        element.classList.add('visible');
+                    }, index * 200);
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+      
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            document.getElementById(sectionId).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            slideIndex = 0;
+            setTimeout(showSlides, 300);
+            setTimeout(animateOnScroll, 500);
+        }
+        
+       
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            updateCartUI();
+            showCartNotification();
+        }
+        
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+        
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                removeFromCart(index);
+            } else {
+                updateCartUI();
+            }
+        }
+        
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">🛒 Votre panier est vide</p>';
+                cartTotal.style.display = 'none';
+                checkoutBtn.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        <div style="width: 50px; height: 50px; background: url('${item.image}') center/cover; border-radius: 10px; margin-right: 1rem;"></div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">${item.price.toLocaleString()} FCFA</div>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-control">
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">−</button>
+                                <span>${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                            </div>
+                            <button style="background: #ff6b35; color: white; border: none; padding: 0.3rem 0.5rem; border-radius: 5px; cursor: pointer; margin-left: 0.5rem;" onclick="removeFromCart(${index})">🗑️</button>
+                        </div>
+                    </div>
+                `).join('');
+                
+                cartTotal.innerHTML = `💰 Total: ${totalPrice.toLocaleString()} FCFA`;
+                cartTotal.style.display = 'block';
+                checkoutBtn.style.display = 'block';
+            }
+        }
+        
+        function showCartNotification() {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(45deg, #ff6b35, #87ceeb);
+                color: white;
+                padding: 1rem;
+                border-radius: 10px;
+                z-index: 3000;
+                animation: slideInRight 0.5s ease-out;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            `;
+            notification.innerHTML = '✅ Produit ajouté au panier !';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        function openCartModal() {
+            updateCartUI();
+            document.getElementById('cartModal').style.display = 'block';
+        }
+        
+        function closeCartModal() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+        
+        function proceedToCheckout() {
+            if (cart.length === 0) return;
+            
+            let message = `🛍️ *COMMANDE PANIER - Déco Art Jour de Chance*\n\n`;
+            message += `📦 *Articles commandés:*\n`;
+            
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.name}\n`;
+                message += `   Quantité: ${item.quantity}\n`;
+                message += `   Prix unitaire: ${item.price.toLocaleString()} FCFA\n`;
+                message += `   Sous-total: ${(item.price * item.quantity).toLocaleString()} FCFA\n\n`;
+            });
+            
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += `💰 *TOTAL GÉNÉRAL: ${totalPrice.toLocaleString()} FCFA*\n\n`;
+            message += `🏪 *Boutique:* Douala, Marché Koulouloun\n`;
+            message += `🕒 *Commande passée le:* ${new Date().toLocaleString('fr-FR')}\n\n`;
+            message += `✅ *Merci de confirmer votre commande et votre adresse de livraison*`;
+            
+            const whatsappUrl = `https://wa.me/237670131186?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            closeCartModal();
+            
+           
+            setTimeout(() => {
+                cart = [];
+                updateCartUI();
+            }, 2000);
+        }
+        
+       
+        function openOrderModal(productName, price) {
+            currentProduct.name = productName;
+            currentProduct.price = price;
+            
+            document.getElementById('productName').value = productName;
+            document.getElementById('totalPrice').value = price + ' FCFA';
+            
+           
+            const isClothing = productName.toLowerCase().includes('maillot') || 
+                              productName.toLowerCase().includes('survêtement') ||
+                              productName.toLowerCase().includes('jogging') ||
+                              productName.toLowerCase().includes('short') ||
+                              productName.toLowerCase().includes('tee-shirt') ||
+                              productName.toLowerCase().includes('veste') ||
+                              productName.toLowerCase().includes('polo') ||
+                              productName.toLowerCase().includes('legging') ||
+                              productName.toLowerCase().includes('brassière') ||
+                              productName.toLowerCase().includes('ensemble');
+            
+            document.getElementById('sizeGroup').style.display = isClothing ? 'block' : 'none';
+            document.getElementById('flockingGroup').style.display = productName.toLowerCase().includes('maillot') ? 'block' : 'none';
+            
+            document.getElementById('orderModal').style.display = 'block';
+        }
+        
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+        
+        function updatePrice() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const productName = currentProduct.name.toLowerCase();
+            let basePrice;
+            
+            if (productName.includes('rolex') || productName.includes('montre')) {
+                basePrice = 35000;
+            } else if (productName.includes('maillot')) {
+                basePrice = 3000;
+            } else {
+                basePrice = parseInt(currentProduct.price);
+            }
+            
+            let totalPrice;
+            if (productName.includes('maillot') && quantity >= 5) {
+                totalPrice = quantity * 2000;
+            } else {
+                totalPrice = quantity * basePrice;
+            }
+            
+            document.getElementById('totalPrice').value = totalPrice.toLocaleString() + ' FCFA';
+        }
+        
+        
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            let message = `⚡ *COMMANDE EXPRESS - Déco Art Jour de Chance*\n\n`;
+            message += `👤 *Client:* ${data.customerName}\n`;
+            message += `📱 *Téléphone:* ${data.phone}\n`;
+            message += `🎁 *Produit:* ${data.productName}\n`;
+            message += `📦 *Quantité:* ${data.quantity}\n`;
+            
+            if (data.size) {
+                message += `👕 *Taille:* ${data.size}\n`;
+            }
+            
+            if (data.flocking) {
+                message += `🎨 *Flocage:* ${data.flocking}\n`;
+            }
+            
+            if (data.address) {
+                message += `📍 *Adresse:* ${data.address}\n`;
+            }
+            
+            if (data.notes) {
+                message += `📝 *Notes:* ${data.notes}\n`;
+            }
+            
+            message += `💰 *Prix total:* ${data.totalPrice}\n\n`;
+            message += `🏪 *Boutique:* Douala, Marché Koulouloun\n`;
+            message += `🕒 *Commande passée le:* ${new Date().toLocaleString('fr-FR')}\n\n`;
+            message += `✅ *Merci de confirmer votre commande*`;
+            
+            const whatsappUrl = `https://wa.me/237670131186?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            closeOrderModal();
+        });
+        
+       
+        window.onclick = function(event) {
+            const orderModal = document.getElementById('orderModal');
+            const cartModal = document.getElementById('cartModal');
+            
+            if (event.target === orderModal) {
+                closeOrderModal();
+            }
+            if (event.target === cartModal) {
+                closeCartModal();
+            }
+        }
+        
+       
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.product-image');
+            images.forEach(image => {
+                image.addEventListener('load', function() {
+                    this.classList.remove('loading');
+                });
+            });
+        });
+        
+       
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+       
+        showSection('home');
+        updateCartUI();
+    </script>
+</body>
+</html>
